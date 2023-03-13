@@ -1,0 +1,148 @@
+body: FutureBuilder<Cartclass>(
+        // future builder
+        future: checkoutcart(user.data.address),
+        builder: (context, snap) {
+          if (snap.hasData) {
+            // create data
+            var data = snap.data!.data;
+// rebuild widget
+
+            rebuild == 0
+                ? Future.delayed(Duration.zero, () {
+                    setState(() {
+                      print("rebuild");
+                      rebuild = 1;
+                      total = snap.data!.price.toStringAsFixed(2);
+                    });
+                  })
+                : null;
+
+// check if cart is empty
+            if (user.data.cart.isEmpty) {
+              return Center(
+                child: Image.asset("assets/emptycart.webp"),
+              );
+// if cart id not empty render future builder
+            } else {
+              return ListView.separated(
+                separatorBuilder: (context, index) => const Divider(
+                  color: lightwhite,
+                ),
+                itemCount: data.length,
+                itemBuilder: (context, i) {
+                  // build the containers
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.08,
+                        right: MediaQuery.of(context).size.width * 0.08),
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      color: white,
+                      child: Column(
+                        children: [
+                          Image.network(
+                            data[i].imgUrl,
+                            height: 150,
+                          ),
+                          vgap(10),
+                          Row(
+                            children: [
+                              f5("Category: ", 14, color: deepgreen),
+                              f1(data[i].category, 14, color: black)
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              f5("Title: ", 14, color: deepgreen),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: f1(data[i].title, 14, color: black),
+                              )
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              f5("Quantity: ", 14, color: deepgreen),
+                              f1(data[i].quantity.toString(), 14, color: black),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              f5("Price: ", 14, color: deepgreen),
+                              f1("∆${data[i].price.toStringAsFixed(2)}", 14,
+                                  color: black),
+                            ],
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: TextButton.icon(
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                iconColor: white,
+                              ),
+                              // add to cart function
+                              onPressed: () =>
+                                  deletedialog(user.data.address, data[i].id),
+                              icon: const Icon(Icons.delete),
+                              label: f5("Remove from cart", 14, color: white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                  // build the cart
+                },
+              );
+            }
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: deepgreen,
+              ),
+            );
+          }
+        },
+      ),
+
+
+
+
+
+
+
+
+        // main body starts here
+              // 1) weather card
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 10, top: 10),
+              //   child: f6("Weather", 16),
+              // ),
+              weather(),
+              vgap(10),
+
+              // 2) entertainment card
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 10),
+              //   child: f6("Entertainment", 16, color: black),
+              // ),
+
+              entertainments(context),
+              vgap(10),
+              // 3) entertainment
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 10),
+              //   child: f6("Onilne Store", 16, color: black),
+              // ),
+              store(context),
+              vgap(10),
+              // 4) news card
+
+              news(context),
+              vgap(10),
