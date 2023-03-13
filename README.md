@@ -1,4 +1,4 @@
-# technovationapp
+# Ecotopia App 
 
 A new Flutter project.
 
