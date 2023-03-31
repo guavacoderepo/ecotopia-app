@@ -11,6 +11,10 @@ import 'package:technovationapp/screens/profile.dart';
 import 'package:technovationapp/screens/store.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import 'package:intl/intl.dart';
+import 'package:camera/camera.dart';
+import 'realtime/live_camera.dart';
+
+List<CameraDescription> cameras = [];
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -20,6 +24,18 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  void cameraDetection() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    cameras = await availableCameras();
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LiveFeed(cameras),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Usersclass user = Provider.of<Users>(context).user;
@@ -37,8 +53,8 @@ class _DashboardState extends State<Dashboard> {
           child: CircleAvatar(
             backgroundColor: deepgreen,
             child: IconButton(
-              onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Profile())),
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Profile())),
               icon: const Icon(
                 IconlyLight.profile,
                 color: white,
@@ -198,21 +214,25 @@ class _DashboardState extends State<Dashboard> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    color: const Color(0XFF411530).withOpacity(0.2),
-                    padding: const EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width / 2.25,
-                    height: MediaQuery.of(context).size.width / 2.2,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.calculate_outlined,
-                          size: 70,
-                          color: const Color(0XFF411530).withOpacity(0.3),
-                        ),
-                        f1("Footprint", 17, color: black)
-                      ],
+// footprint section
+                  InkWell(
+                    onTap: () => cameraDetection(),
+                    child: Container(
+                      color: const Color(0XFF411530).withOpacity(0.2),
+                      padding: const EdgeInsets.all(10),
+                      width: MediaQuery.of(context).size.width / 2.25,
+                      height: MediaQuery.of(context).size.width / 2.2,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.calculate_outlined,
+                            size: 70,
+                            color: const Color(0XFF411530).withOpacity(0.3),
+                          ),
+                          f1("Footprint", 17, color: black)
+                        ],
+                      ),
                     ),
                   ),
                   // 3) online store
@@ -220,6 +240,8 @@ class _DashboardState extends State<Dashboard> {
                   //   padding: const EdgeInsets.only(left: 10),
                   //   child: f6("Onilne Store", 16, color: black),
                   // ),
+
+// store section
                   InkWell(
                     onTap: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) => const Store())),
@@ -249,10 +271,12 @@ class _DashboardState extends State<Dashboard> {
               //   padding: const EdgeInsets.only(left: 10),
               //   child: f6("Entertainment", 16, color: black),
               // ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
+// entertainment section
                     color: Colors.blue.withOpacity(0.2),
                     padding: const EdgeInsets.all(10),
                     width: MediaQuery.of(context).size.width / 2.25,
@@ -275,6 +299,8 @@ class _DashboardState extends State<Dashboard> {
                   //   padding: const EdgeInsets.only(left: 10),
                   //   child: f6("Onilne Store", 16, color: black),
                   // ),
+
+// news section
                   InkWell(
                     onTap: () => Navigator.push(
                       context,
