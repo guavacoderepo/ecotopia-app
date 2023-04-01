@@ -54,7 +54,7 @@ class _LiveFeedState extends State<LiveFeed> {
         children: <Widget>[
           CameraFeed(widget.cameras, setRecognitions),
           BoundingBox(
-            _recognitions == null ? [] : _recognitions,
+            _recognitions ?? [],
             math.max(_imageHeight, _imageWidth),
             math.min(_imageHeight, _imageWidth),
             screen.height,

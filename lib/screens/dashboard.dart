@@ -205,48 +205,66 @@ class _DashboardState extends State<Dashboard> {
               //   child: f6("Weather", 16),
               // ),
               weather(formattedDate),
+
               vgap(20),
-              // 2) carbon feetprint card
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 10),
-              //   child: f6("Onilne Store", 16, color: black),
-              // ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.45,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  children: [
 // footprint section
-                  InkWell(
-                    onTap: () => cameraDetection(),
-                    child: Container(
-                      color: const Color(0XFF411530).withOpacity(0.2),
-                      padding: const EdgeInsets.all(10),
-                      width: MediaQuery.of(context).size.width / 2.25,
-                      height: MediaQuery.of(context).size.width / 2.2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.calculate_outlined,
-                            size: 70,
-                            color: const Color(0XFF411530).withOpacity(0.3),
-                          ),
-                          f1("Footprint", 17, color: black)
-                        ],
+                    InkWell(
+                      onTap: () => cameraDetection(),
+                      child: Container(
+                        color: const Color(0xff637BFF).withOpacity(0.1),
+                        padding: const EdgeInsets.all(10),
+                        width: MediaQuery.of(context).size.width / 2.25,
+                        height: MediaQuery.of(context).size.width / 2.2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.calculate_outlined,
+                              size: 70,
+                              color: const Color(0xff637BFF).withOpacity(0.3),
+                            ),
+                            f1("Footprint", 17, color: black)
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  // 3) online store
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10),
-                  //   child: f6("Onilne Store", 16, color: black),
-                  // ),
 
 // store section
-                  InkWell(
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Store())),
-                    child: Container(
-                      color: deepgreen.withOpacity(0.2),
+                    InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Store())),
+                      child: Container(
+                        color: const Color(0xffF19A1A).withOpacity(0.1),
+                        padding: const EdgeInsets.all(10),
+                        width: MediaQuery.of(context).size.width / 2.25,
+                        height: MediaQuery.of(context).size.width / 2.2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.shopping_cart_outlined,
+                              size: 70,
+                              color: const Color(0xffF19A1A).withOpacity(0.3),
+                            ),
+                            f1("Store", 17, color: black)
+                          ],
+                        ),
+                      ),
+                    ),
+
+// entertainment section
+                    Container(
+                      color: const Color(0xff21C8F6).withOpacity(0.1),
                       padding: const EdgeInsets.all(10),
                       width: MediaQuery.of(context).size.width / 2.25,
                       height: MediaQuery.of(context).size.width / 2.2,
@@ -254,81 +272,43 @@ class _DashboardState extends State<Dashboard> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.shopping_cart_outlined,
+                            Icons.view_carousel_outlined,
                             size: 70,
-                            color: deepgreen.withOpacity(0.3),
+                            color: Color(0xff21C8F6).withOpacity(0.3),
                           ),
-                          f1("Store", 17, color: black)
+                          f1("Entertainment", 17, color: black)
                         ],
                       ),
                     ),
-                  )
-                ],
-              ),
-              vgap(20),
-              // 4) entertainment card
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 10),
-              //   child: f6("Entertainment", 16, color: black),
-              // ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-// entertainment section
-                    color: Colors.blue.withOpacity(0.2),
-                    padding: const EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width / 2.25,
-                    height: MediaQuery.of(context).size.width / 2.2,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.view_carousel_outlined,
-                          size: 70,
-                          color: Colors.blue.withOpacity(0.3),
-                        ),
-                        f1("Entertainment", 17, color: black)
-                      ],
-                    ),
-                  ),
-
-                  // 5) news card
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10),
-                  //   child: f6("Onilne Store", 16, color: black),
-                  // ),
 
 // news section
-                  InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Newspage()),
-                    ),
-                    child: Container(
-                      color: Colors.grey.withOpacity(0.2),
-                      padding: const EdgeInsets.all(10),
-                      width: MediaQuery.of(context).size.width / 2.25,
-                      height: MediaQuery.of(context).size.width / 2.2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.newspaper_rounded,
-                            size: 70,
-                            color: Colors.grey.withOpacity(0.3),
-                          ),
-                          f1("News", 17, color: black)
-                        ],
+                    InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Newspage()),
                       ),
-                    ),
-                  )
-                ],
+                      child: Container(
+                        color: const Color(0xff4CD964).withOpacity(0.1),
+                        padding: const EdgeInsets.all(10),
+                        width: MediaQuery.of(context).size.width / 2.25,
+                        height: MediaQuery.of(context).size.width / 2.2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.newspaper_rounded,
+                              size: 70,
+                              color: const Color(0xff4CD964).withOpacity(0.3),
+                            ),
+                            f1("News", 17, color: black)
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-              // f1("Designed by GuavaCode", 8, color: deepgreen)
-              // news(context),
-              // newsbuild(context, img, txt)
             ],
           ),
         ),
