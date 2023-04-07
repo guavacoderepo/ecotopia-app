@@ -154,7 +154,7 @@ class _BankPaymentState extends State<BankPayment> {
   payment(bank, token, address, name, amount) async =>
       bankpay(bank, token, address, name, amount).then((value) {
         if (value["status"] == true) {
-          Provider.of<Users>(context, listen: false).users(address: address);
+          Provider.of<Users>(context, listen: false).users(username: address);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: f5("Transfer successful.", 12, color: white),

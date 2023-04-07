@@ -42,16 +42,18 @@ class Data {
     required this.phone,
     required this.username,
     required this.id,
+    required this.lastScan,
   });
 
   String address;
-  double balance;
+  int balance;
   List<dynamic> cart;
   String email;
   String name;
   String phone;
   String username;
   String id;
+  String lastScan;
 
   factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
 
@@ -66,6 +68,7 @@ class Data {
         phone: json["Phone"],
         username: json["Username"],
         id: json["_id"],
+        lastScan: json["lastScan"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -77,31 +80,32 @@ class Data {
         "Phone": phone,
         "Username": username,
         "_id": id,
+        "lastScan": lastScan,
       };
 }
-
-
 
 // user class
 // ##################################################
 class Users extends ChangeNotifier {
   Usersclass _user = Usersclass(
     data: Data(
-        address: "0xff00000000000000000000",
-        balance: 0,
-        cart: [],
-        email: "",
-        name: "",
-        phone: "",
-        username: "Admin",
-        id: ""),
+      address: "0xff00000000000000000000",
+      balance: 0,
+      cart: [],
+      email: "",
+      name: "",
+      phone: "",
+      username: "Admin",
+      id: "",
+      lastScan: "",
+    ),
     message: "",
     status: false,
   );
 
   Usersclass get user => _user;
 
-  Future users({String address = ""}) async {
+  Future users({String username = ""}) async {
     var client = http.Client();
 
     try {
@@ -111,7 +115,7 @@ class Users extends ChangeNotifier {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode({
-          "Address": address,
+          "Username": username,
         }),
       );
       // print(request.body);

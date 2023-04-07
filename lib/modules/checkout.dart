@@ -82,7 +82,7 @@ class Datum {
       };
 }
 
-Future<Cartclass> checkoutcart(userid) async {
+Future<Cartclass> checkoutcart(user) async {
   var client = http.Client();
   // print(userid);
   // print(productid);
@@ -92,7 +92,7 @@ Future<Cartclass> checkoutcart(userid) async {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode({"Address": userid}),
+      body: jsonEncode({"Username": user}),
     );
     // print(request.body);
     if (request.statusCode == 200) {

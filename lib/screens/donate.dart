@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:technovationapp/constants/colors.dart';
 import 'package:technovationapp/constants/font.dart';
-import 'package:technovationapp/utilities/variables.dart';
+
 
 class Contribute extends StatelessWidget {
   const Contribute({super.key});
@@ -28,66 +28,57 @@ class Contribute extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              f6("Step one:", 15),
-              f1("asyncInitState() executes only when widget is build. inside in initState. NepoKale.",
-                  13,
-                  color: blacklight),
-              Align(
-                alignment: Alignment.center,
-                child: Image.network(
-                  "https://previews.agefotostock.com/previewimage/medibigoff/74a269a72d202b8e64b233c15e1a7b71/esy-060146802.jpg",
-                  width: MediaQuery.of(context).size.width / 1.5,
-                ),
-              ),
-              f6("Step Two:", 15),
-              f1("asyncInitState() executes only when widget inside in initState. NepoKale.",
-                  13,
-                  color: blacklight),
-              Align(
-                alignment: Alignment.center,
-                child: Image.network(
-                  "https://cdn5.vectorstock.com/i/1000x1000/28/94/young-people-in-outlet-shop-purchasing-clothes-vector-34502894.jpg",
-                  width: MediaQuery.of(context).size.width / 1.5,
-                ),
-              ),
-              f6("Step Three:", 15),
-              f1("asyncInitState() executes only when widgetinside in initState. NepoKale.",
-                  13,
-                  color: blacklight),
-              Align(
-                alignment: Alignment.center,
-                child: Image.network(
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzuqgNYQreufRS9crBWJv73rjLpRE1wH_h_w&usqp=CAU",
-                  width: MediaQuery.of(context).size.width / 1.5,
-                ),
-              ),
-              f6("Step Four:", 15),
-              f1("asyncInitState() executes only when widget inside in initState. NepoKale.",
-                  13,
-                  color: blacklight),
-              Align(
-                alignment: Alignment.center,
-                child: Image.network(
-                  "https://cdn.xxl.thumbs.canstockphoto.com/fashion-brand-outlet-landing-page-template-cheerful-shopaholic-girls-purchase-clothes-happy-women-eps-vectors_csp90179039.jpg",
-                  width: MediaQuery.of(context).size.width / 1.5,
-                ),
-              ),
-              f6("Step Five:", 15),
-              f1("asyncInitState() executes only when widget inside in initState. NepoKale.",
-                  13,
-                  color: blacklight),
-              Align(
-                alignment: Alignment.center,
-                child: Image.network(
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLPFdg1gDrUPjctIjbTDqrrYmtrIRCbOu46w&usqp=CAU",
-                  width: MediaQuery.of(context).size.width / 1.5,
-                ),
-              ),
-              vgap(10)
+              const SizedBox(height: 10),
+              f4("ECoins is the in-app currency on EcoTopia that can be used to make in-app purchases on the app store or can be transferred to your commercial bank  account (ta lower exchange rate). ",
+                  15),
+              const SizedBox(height: 30),
+              cardDesign(context, "1", "assets/img/img1.png",
+                  "Identify an outlet around you"),
+              const SizedBox(height: 10),
+              cardDesign(context, "2", "assets/img/img2.png",
+                  "Bring recyclables to the outlet"),
+              const SizedBox(height: 10),
+              cardDesign(context, "3", "assets/img/img3.png",
+                  "Your plastic will be exchanged to coin")
             ],
           ),
         ),
       ),
     );
   }
+
+  cardDesign(context, number, img, title) => Container(
+        width: double.infinity,
+        height: 200,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: black.withOpacity(0.3),
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  color: green.withOpacity(0.4),
+                  width: 50,
+                  height: 50,
+                  child: Center(child: f1(number, 20, color: black)),
+                ),
+                f4(title, 13),
+                const SizedBox(width: 5)
+              ],
+            ),
+            Center(
+              child: Image.asset(
+                img,
+              ),
+            )
+          ],
+        ),
+      );
 }

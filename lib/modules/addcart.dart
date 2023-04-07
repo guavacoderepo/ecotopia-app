@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:technovationapp/constants/url.dart';
 
-Future cart(userid, productid, quantity) async {
+Future cart(user, productid, quantity) async {
   var client = http.Client();
   // print(userid);
   // print(productid);
@@ -13,7 +13,7 @@ Future cart(userid, productid, quantity) async {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode({
-        "UserAddress": userid,
+        "Username": user,
         "Item_id": productid,
         "Quantity": quantity,
       }),

@@ -168,7 +168,7 @@ class _StoreState extends State<Store> {
                                           .then((value) {
                                         Provider.of<Users>(context,
                                                 listen: false)
-                                            .users(address: user.data.address);
+                                            .users(username: user.data.address);
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

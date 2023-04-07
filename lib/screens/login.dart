@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
         await save(useraddresss);
 
 // ###############
-        Provider.of<Users>(context, listen: false).users(address: useraddresss);
+        Provider.of<Users>(context, listen: false).users(username: useraddresss);
 // ###############
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const Dashboard()));

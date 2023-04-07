@@ -43,7 +43,7 @@ dependencies:
   uuid: ^3.0.7
   intl: ^0.18.0
   camera: ^0.10.3+2
-  tflite: ^1.1.2
+  # tflite: ^1.1.2
 
 dev_dependencies:
   flutter_test:

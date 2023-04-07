@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:technovationapp/constants/url.dart';
 
-Future deletecart(userid, productid) async {
+Future deletecart(user, productid) async {
   var client = http.Client();
   // print(userid);
   // print(productid);
@@ -12,7 +12,7 @@ Future deletecart(userid, productid) async {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode({"Address": userid, "Item_id": productid}),
+      body: jsonEncode({"Username": user, "Item_id": productid}),
     );
     // print(request.body);
     if (request.statusCode == 200) {

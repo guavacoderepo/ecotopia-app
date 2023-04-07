@@ -17,6 +17,14 @@ Text f7(text, double size,
   );
 }
 
+Text f4(text, double size,
+    {FontWeight weight = FontWeight.w400, Color color = green}) {
+  return Text(
+    text,
+    style: TextStyle(fontSize: size, fontWeight: weight, color: color),
+  );
+}
+
 Text f1(text, double size,
     {FontWeight weight = FontWeight.w200, Color color = white}) {
   return Text(

@@ -280,7 +280,7 @@ class _CartState extends State<Cart> {
     await makepayment(address, token).then(
       (value) {
         if (value["status"] == true) {
-          Provider.of<Users>(context, listen: false).users(address: address);
+          Provider.of<Users>(context, listen: false).users(username: address);
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -320,7 +320,7 @@ class _CartState extends State<Cart> {
 
     await deletecart(userid, productid).then((value) {
       if (value["status"] == true) {
-        Provider.of<Users>(context, listen: false).users(address: userid);
+        Provider.of<Users>(context, listen: false).users(username: userid);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => const Cart()));
       } else {

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:technovationapp/constants/url.dart';
 
-Future makepayment(address, token) async {
+Future makepayment(user, token) async {
   var client = http.Client();
 
   try {
@@ -14,7 +14,7 @@ Future makepayment(address, token) async {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(
-        {"Address": address, "Token": token},
+        {"Username": user, "Token": token},
       ),
     );
     // print(request.body);

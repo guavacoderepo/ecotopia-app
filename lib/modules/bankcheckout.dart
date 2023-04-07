@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:technovationapp/constants/url.dart';
 
-Future bankpay(bank, token, address, name, amount) async {
+Future bankpay(bank, token, user, name, amount) async {
   var client = http.Client();
   // print(userid);
   // print(productid);
@@ -17,7 +17,7 @@ Future bankpay(bank, token, address, name, amount) async {
         "Name": name,
         "Amount": amount,
         "Token": token,
-        "Address": address,
+        "Username": user,
       }),
     );
     // print(request.body);

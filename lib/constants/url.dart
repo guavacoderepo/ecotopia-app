@@ -1,5 +1,5 @@
 // const String baseUrl = "http://192.168.253.22:5000";
-const String baseUrl = "https://ecotopia-backend.vercel.app";
+const String baseUrl = "https://ecotopiaapp-dqmosooj7-guavacodeplus.vercel.app";
 
 const String fetchStoreData = "/api/v1/store/products";
 
