@@ -27,32 +27,32 @@ class _StoreState extends State<Store> {
         appBar: AppBar(
           backgroundColor: transparent,
           elevation: 0,
-          title: SizedBox(
-            height: 35,
-            // search filed
-            child: TextField(
-              style: const TextStyle(fontSize: 15, color: blacklight),
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.all(2),
-                enabledBorder: const OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color.fromARGB(255, 119, 118, 118)),
-                ),
-                focusedBorder: const OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color.fromARGB(115, 104, 103, 103)),
-                ),
-                prefixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    IconlyLight.search,
-                    color: blacklight,
-                    size: 20,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // title: SizedBox(
+          //   height: 35,
+          //   // search filed
+          //   child: TextField(
+          //     style: const TextStyle(fontSize: 15, color: blacklight),
+          //     decoration: InputDecoration(
+          //       contentPadding: const EdgeInsets.all(2),
+          //       enabledBorder: const OutlineInputBorder(
+          //         borderSide:
+          //             BorderSide(color: Color.fromARGB(255, 119, 118, 118)),
+          //       ),
+          //       focusedBorder: const OutlineInputBorder(
+          //         borderSide:
+          //             BorderSide(color: Color.fromARGB(115, 104, 103, 103)),
+          //       ),
+          //       prefixIcon: IconButton(
+          //         onPressed: () {},
+          //         icon: const Icon(
+          //           IconlyLight.search,
+          //           color: blacklight,
+          //           size: 20,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           // arrow back
           leading: IconButton(
             onPressed: () => Navigator.pop(context),

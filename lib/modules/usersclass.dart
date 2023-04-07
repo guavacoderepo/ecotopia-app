@@ -46,7 +46,7 @@ class Data {
   });
 
   String address;
-  int balance;
+  double balance;
   List<dynamic> cart;
   String email;
   String name;

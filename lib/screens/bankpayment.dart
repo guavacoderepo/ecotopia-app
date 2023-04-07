@@ -107,7 +107,7 @@ class _BankPaymentState extends State<BankPayment> {
                     onPressed: () async => proceedPayment(
                       "$_selectedbank,${_accountnumber.text}",
                       token,
-                      user.data.address,
+                      user.data.username,
                       _accountname.text,
                       double.parse(_amount.text),
                     ),
@@ -123,7 +123,7 @@ class _BankPaymentState extends State<BankPayment> {
     );
   }
 
-  Future proceedPayment(bank, token, address, name, amount) async {
+  Future proceedPayment(bank, token, username, name, amount) async {
     return showDialog(
         barrierDismissible: true,
         context: context,
@@ -143,7 +143,7 @@ class _BankPaymentState extends State<BankPayment> {
                 onPressed: () async {
                   FocusScope.of(context).unfocus();
                   Navigator.pop(context);
-                  payment(bank, token, address, name, amount);
+                  payment(bank, token, username, name, amount);
                 },
               ),
             ],
@@ -151,10 +151,10 @@ class _BankPaymentState extends State<BankPayment> {
         });
   }
 
-  payment(bank, token, address, name, amount) async =>
-      bankpay(bank, token, address, name, amount).then((value) {
+  payment(bank, token, username, name, amount) async =>
+      bankpay(bank, token, username, name, amount).then((value) {
         if (value["status"] == true) {
-          Provider.of<Users>(context, listen: false).users(username: address);
+          Provider.of<Users>(context, listen: false).users(username: username);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: f5("Transfer successful.", 12, color: white),

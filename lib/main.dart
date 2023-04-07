@@ -26,8 +26,22 @@ void main() => runApp(
               scaffoldBackgroundColor: lightwhite,
             ),
             debugShowCheckedModeBanner: false,
+            builder: (context, child) {
+              return ScrollConfiguration(
+                behavior: MyBehavior(),
+                child: child!,
+              );
+            },
             home: const Splash()
             // home: Store(),
             ),
       ),
     );
+
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
+}

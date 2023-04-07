@@ -72,7 +72,7 @@ class _CartState extends State<Cart> {
                 ),
                 onPressed: user.data.cart.isEmpty
                     ? null
-                    : () async => paymentdialog(user.data.address, token),
+                    : () async => paymentdialog(user.data.username, token),
                 icon: const Icon(Icons.payment),
                 label: f5("Pay", 14, color: white),
               ),
@@ -92,7 +92,7 @@ class _CartState extends State<Cart> {
 // cart body
       body: FutureBuilder<Cartclass>(
         // future builder
-        future: checkoutcart(user.data.address),
+        future: checkoutcart(user.data.username),
         builder: (context, snap) {
           if (snap.hasData) {
             // create data
@@ -176,7 +176,7 @@ class _CartState extends State<Cart> {
                               ),
                               // add to cart function
                               onPressed: () async => await deletedialog(
-                                  user.data.address, data[i].id),
+                                  user.data.username, data[i].id),
                               icon: const Icon(Icons.delete),
                               label: f5("Remove from cart", 14, color: white),
                             ),
@@ -231,7 +231,7 @@ class _CartState extends State<Cart> {
   }
 
   // delete item from cart
-  Future paymentdialog(address, token) async {
+  Future paymentdialog(username, token) async {
     return showDialog(
       context: context,
       barrierDismissible: canClose,
@@ -251,7 +251,7 @@ class _CartState extends State<Cart> {
               onPressed: () async {
                 // close and make payment
                 Navigator.pop(context);
-                paying(address, token);
+                paying(username, token);
               },
             ),
           ],
@@ -260,7 +260,7 @@ class _CartState extends State<Cart> {
     );
   }
 
-  Future paying(address, token) async {
+  Future paying(username, token) async {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -277,10 +277,10 @@ class _CartState extends State<Cart> {
         );
       },
     );
-    await makepayment(address, token).then(
+    await makepayment(username, token).then(
       (value) {
         if (value["status"] == true) {
-          Provider.of<Users>(context, listen: false).users(username: address);
+          Provider.of<Users>(context, listen: false).users(username: username);
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

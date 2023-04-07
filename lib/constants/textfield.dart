@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:technovationapp/constants/colors.dart';
 
-Widget inputbox(hint, controller, {bool obs = false, TextInputType keyboard = TextInputType.text}) {
+Widget inputbox(hint, controller,
+    {bool obs = false, TextInputType keyboard = TextInputType.text}) {
   return TextField(
     style: const TextStyle(fontSize: 15, color: blacklight),
     decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(5),
+        contentPadding: const EdgeInsets.only(left: 20, right: 20),
         filled: true,
         fillColor: white,
         // labelText: hint,
