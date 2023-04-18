@@ -162,17 +162,17 @@ class _LoginState extends State<Login> {
                             : f7("Login", 15, color: Colors.white),
                       ),
                       vgap(40),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.fingerprint_rounded,
-                            color: white.withOpacity(0.4),
-                            size: 70,
-                          ),
-                        ),
-                      ),
+                      // SizedBox(
+                      //   width: MediaQuery.of(context).size.width,
+                      //   child: IconButton(
+                      //     onPressed: () {},
+                      //     icon: Icon(
+                      //       Icons.fingerprint_rounded,
+                      //       color: white.withOpacity(0.4),
+                      //       size: 70,
+                      //     ),
+                      //   ),
+                      // ),
                       vgap(70)
                     ],
                   ),

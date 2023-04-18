@@ -13,6 +13,7 @@ import 'package:technovationapp/screens/store.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import 'package:intl/intl.dart';
 import 'package:camera/camera.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 List<CameraDescription> cameras = [];
 
@@ -25,6 +26,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
 // camera func
+  final Uri _url = Uri.parse('https://b-u-b-e.itch.io/ecotopia');
   Future cameraDetection() async {
     WidgetsFlutterBinding.ensureInitialized();
     cameras = await availableCameras();
@@ -35,6 +37,12 @@ class _DashboardState extends State<Dashboard> {
         builder: (context) => Footprint(cameras),
       ),
     );
+  }
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 
   @override
@@ -63,32 +71,32 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: PopupMenuButton(
-              offset: const Offset(0, 5),
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  value: 1,
-                  child: f1("About", 13, color: black),
-                ),
-                PopupMenuItem(
-                  value: 2,
-                  child: f1("Privacy policy", 13, color: black),
-                ),
-                PopupMenuItem(
-                  value: 3,
-                  child: f1("Logout", 13, color: black),
-                ),
-              ],
-              child: const Icon(
-                IconlyLight.setting,
-                color: deepgreen,
-              ),
-            ),
-          )
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.all(10.0),
+        //     child: PopupMenuButton(
+        //       offset: const Offset(0, 5),
+        //       itemBuilder: (context) => [
+        //         PopupMenuItem(
+        //           value: 1,
+        //           child: f1("About", 13, color: black),
+        //         ),
+        //         PopupMenuItem(
+        //           value: 2,
+        //           child: f1("Privacy policy", 13, color: black),
+        //         ),
+        //         PopupMenuItem(
+        //           value: 3,
+        //           child: f1("Logout", 13, color: black),
+        //         ),
+        //       ],
+        //       child: const Icon(
+        //         IconlyLight.setting,
+        //         color: deepgreen,
+        //       ),
+        //     ),
+        //   )
+        // ],
       ),
 // main body
       body: SingleChildScrollView(
@@ -192,7 +200,7 @@ class _DashboardState extends State<Dashboard> {
                       const Color(0xff21C8F6),
                       "Entertainment",
                       Icons.queue_music_rounded,
-                      () {},
+                      () => _launchUrl(),
                     ),
 // news section
                     cardDesign(

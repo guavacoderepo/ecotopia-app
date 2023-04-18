@@ -58,7 +58,7 @@ class _ProfileState extends State<Profile> {
                 backgroundColor: primary,
                 radius: 60,
                 backgroundImage: NetworkImage(
-                  "https://yt3.ggpht.com/ytc/AMLnZu-zsSC8ONGBTSM1I-4jebJq8ntst2NEmW8E6pw05g=s900-c-k-c0x00ffffff-no-rj",
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiGcFYBKGruads8sUVAfUBlX8orSdEwuSSTg&usqp=CAU",
                 ),
               ),
             ),

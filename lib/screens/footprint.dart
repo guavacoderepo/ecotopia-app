@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:technovationapp/modules/coin.dart';
 import '../constants/colors.dart';
 import '../constants/font.dart';
 import '../modules/usersclass.dart';
@@ -102,24 +103,24 @@ class _FootprintState extends State<Footprint> {
               child: Stack(
                 children: [
                   CameraPreview(controller),
-                  text("Coin: ∆$newcoin; Total: $coin", 18, color: white)
+                  text("Coin: ∆$newcoin", 18, color: white)
                 ],
               ),
             )
           : Center(
               child: TextButton(
-                child: text("Continue", 14),
-                onPressed: () {
+                onPressed: () async {
+                  update(user.data.username);
+                  Provider.of<Users>(context, listen: false)
+                      .users(username: user.data.username);
                   setState(() => isCam = true);
                 },
+                child: text("Continue", 14),
               ),
             ),
     );
   }
 }
-
-
-
 
 
 // CameraPreview(controller),

@@ -43,11 +43,19 @@ dependencies:
   uuid: ^3.0.7
   intl: ^0.18.0
   camera: ^0.10.3+2
+  url_launcher: ^6.1.10
+
   # tflite: ^1.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # flutter_launcher_icons: "^0.13.0"
+
+# flutter_icons:
+#   android: true
+#   ios: true
+#   image_path: "assets/img/ecologo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:technovationapp/constants/colors.dart';
 import 'package:technovationapp/constants/font.dart';
@@ -78,7 +77,7 @@ class _StoreState extends State<Store> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Cart(),
+                    builder: (context) => const Cart(),
                   ),
                 ),
               ),
@@ -164,11 +163,11 @@ class _StoreState extends State<Store> {
                                     minWidth: 5,
                                     color: deepgreen,
                                     onPressed: () async {
-                                      cart(user.data.address, data[i].id, 1)
+                                      cart(user.data.username, data[i].id, 1)
                                           .then((value) {
                                         Provider.of<Users>(context,
                                                 listen: false)
-                                            .users(username: user.data.address);
+                                            .users(username: user.data.username);
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
