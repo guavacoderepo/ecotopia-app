@@ -6,6 +6,7 @@ import 'package:technovationapp/constants/font.dart';
 import 'package:technovationapp/modules/usersclass.dart';
 import 'package:technovationapp/screens/bankpayment.dart';
 import 'package:technovationapp/screens/donate.dart';
+import 'package:technovationapp/screens/footprint.dart';
 import 'package:technovationapp/screens/news.dart';
 import 'package:technovationapp/screens/profile.dart';
 import 'package:technovationapp/screens/store.dart';
@@ -23,9 +24,17 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  void cameraDetection() async {
+// camera func
+  Future cameraDetection() async {
     WidgetsFlutterBinding.ensureInitialized();
     cameras = await availableCameras();
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Footprint(cameras),
+      ),
+    );
   }
 
   @override
@@ -162,7 +171,7 @@ class _DashboardState extends State<Dashboard> {
                       const Color(0xff637BFF),
                       "Footprint",
                       Icons.calculate_outlined,
-                      () {},
+                      () => cameraDetection(),
                     ),
 // footprint section
                     cardDesign(

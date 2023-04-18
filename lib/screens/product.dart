@@ -46,7 +46,7 @@ class _ProductState extends State<Product> {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Cart(),
+                  builder: (context) => const Cart(),
                 ),
               ),
             ),
