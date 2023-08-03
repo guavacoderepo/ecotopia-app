@@ -55,7 +55,7 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         backgroundColor: transparent,
         elevation: 0,
-        title: text("Hello, ${user.data.username}", 18,
+        title: text("Hello, ${user.data!.username}", 18,
             color: black, weight: FontWeight.w600),
         leading: Padding(
           padding: const EdgeInsets.all(5),
@@ -128,10 +128,10 @@ class _DashboardState extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        f1("∆${user.data.balance.toStringAsFixed(2)}", 23,
+                        f1("∆${user.data!.balance!.toStringAsFixed(2)}", 23,
                             color: black),
                         Flexible(
-                          child: f1(user.data.address, 10, color: black),
+                          child: f1(user.data!.address, 10, color: black),
                         ),
                       ],
                     ),

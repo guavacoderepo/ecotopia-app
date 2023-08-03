@@ -5,14 +5,14 @@ import '../constants/url.dart';
 
 class Usersclass {
   Usersclass({
-    required this.data,
-    required this.message,
-    required this.status,
+    this.data,
+    this.message,
+    this.status,
   });
 
-  Data data;
-  String message;
-  bool status;
+  Data? data;
+  String? message;
+  bool? status;
 
   factory Usersclass.fromJson(String str) =>
       Usersclass.fromMap(json.decode(str));
@@ -26,7 +26,7 @@ class Usersclass {
       );
 
   Map<String, dynamic> toMap() => {
-        "data": data.toMap(),
+        "data": data!.toMap(),
         "message": message,
         "status": status,
       };
@@ -34,26 +34,26 @@ class Usersclass {
 
 class Data {
   Data({
-    required this.address,
-    required this.balance,
-    required this.cart,
-    required this.email,
-    required this.name,
-    required this.phone,
-    required this.username,
-    required this.id,
-    required this.lastScan,
+    this.address,
+    this.balance,
+    this.cart,
+    this.email,
+    this.name,
+    this.phone,
+    this.username,
+    this.id,
+    this.lastScan,
   });
 
-  String address;
-  double balance;
-  List<dynamic> cart;
-  String email;
-  String name;
-  String phone;
-  String username;
-  String id;
-  String lastScan;
+  String? address;
+  double? balance;
+  List<dynamic>? cart;
+  String? email;
+  String? name;
+  String? phone;
+  String? username;
+  String? id;
+  String? lastScan;
 
   factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
 
@@ -74,7 +74,7 @@ class Data {
   Map<String, dynamic> toMap() => {
         "Address": address,
         "Balance": balance,
-        "Cart": List<dynamic>.from(cart.map((x) => x)),
+        "Cart": List<dynamic>.from(cart!.map((x) => x)),
         "Email": email,
         "Name": name,
         "Phone": phone,
@@ -87,21 +87,7 @@ class Data {
 // user class
 // ##################################################
 class Users extends ChangeNotifier {
-  Usersclass _user = Usersclass(
-    data: Data(
-      address: "0xff00000000000000000000",
-      balance: 0,
-      cart: [],
-      email: "",
-      name: "",
-      phone: "",
-      username: "Admin",
-      id: "",
-      lastScan: "",
-    ),
-    message: "",
-    status: false,
-  );
+  Usersclass _user = Usersclass();
 
   Usersclass get user => _user;
 
@@ -133,3 +119,6 @@ class Users extends ChangeNotifier {
     }
   }
 }
+
+
+

@@ -9,9 +9,9 @@ import '../modules/usersclass.dart';
 import 'cart.dart';
 
 class Product extends StatefulWidget {
-  Item item;
+  final Item item;
 
-  Product(this.item, {super.key});
+  const Product(this.item, {super.key});
 
   @override
   State<Product> createState() => _ProductState();
@@ -36,7 +36,7 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.only(right: 10, top: 15),
             child: InkWell(
               child: Badge(
-                label: Text(user.data.cart.length.toString()),
+                label: Text(user.data!.cart!.length.toString()),
                 backgroundColor: deepgreen,
                 child: const Icon(
                   Icons.shopping_cart_outlined,
@@ -165,7 +165,7 @@ class _ProductState extends State<Product> {
                   ),
                   // add to cart function
                   onPressed: () async {
-                    cart(user.data.username, widget.item.id, quantity)
+                    cart(user.data!.username, widget.item.id, quantity)
                         .then((value) {
                       Provider.of<Users>(context, listen: false)
                           .users(username: user.data.username);

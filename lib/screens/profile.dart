@@ -24,14 +24,14 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         backgroundColor: transparent,
         elevation: 0,
-        title: f5("${user.data.username} Profile", 16),
+        title: f5("${user.data!.username} Profile", 16),
 
         // cart icon
         actions: [
           //  total cart item
           Padding(
             padding: const EdgeInsets.only(top: 15, right: 15),
-            child: f1("∆${user.data.balance.toStringAsFixed(2)}", 15,
+            child: f1("∆${user.data!.balance!.toStringAsFixed(2)}", 15,
                 color: blacklight),
           ),
           // payment button
@@ -74,27 +74,27 @@ class _ProfileState extends State<Profile> {
                 children: [
                   f1("Name", 20, color: textgrey),
                   vgap(10),
-                  f1(user.data.name, 15, color: black),
+                  f1(user.data!.name, 15, color: black),
                   vgap(10),
                   f1("Email", 20, color: textgrey),
                   vgap(10),
-                  f1(user.data.email, 15, color: black),
+                  f1(user.data!.email, 15, color: black),
                   vgap(10),
                   f1("Phone", 20, color: textgrey),
                   vgap(10),
-                  f1(user.data.phone, 15, color: black),
+                  f1(user.data!.phone, 15, color: black),
                   vgap(10),
                   f1("UserName", 20, color: textgrey),
                   vgap(10),
-                  f1(user.data.username, 15, color: black),
+                  f1(user.data!.username, 15, color: black),
                   vgap(10),
                   f1("Address", 20, color: textgrey),
                   vgap(10),
-                  f1(user.data.address, 15, color: black),
+                  f1(user.data!.address, 15, color: black),
                   vgap(10),
                   f1("Balance", 20, color: textgrey),
                   vgap(10),
-                  f1("∆${user.data.balance.toStringAsFixed(2)}", 15,
+                  f1("∆${user.data!.balance!.toStringAsFixed(2)}", 15,
                       color: black),
                 ],
               ),

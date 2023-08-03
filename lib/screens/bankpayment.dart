@@ -49,7 +49,7 @@ class _BankPaymentState extends State<BankPayment> {
             Padding(
                 padding: const EdgeInsets.only(right: 10, top: 15),
                 child:
-                    text("∆${user.data.balance.toStringAsPrecision(3)}", 16)),
+                    text("∆${user.data!.balance!.toStringAsPrecision(3)}", 16)),
           ],
           // pop icon
           leading: IconButton(
@@ -107,7 +107,7 @@ class _BankPaymentState extends State<BankPayment> {
                     onPressed: () async => proceedPayment(
                       "$_selectedbank,${_accountnumber.text}",
                       token,
-                      user.data.username,
+                      user.data!.username,
                       _accountname.text,
                       double.parse(_amount.text),
                     ),

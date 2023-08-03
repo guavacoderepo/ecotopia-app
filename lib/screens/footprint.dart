@@ -63,7 +63,8 @@ class _FootprintState extends State<Footprint> {
     //   Navigator.pop(context);
     // }
     var user = Provider.of<Users>(context, listen: true).user;
-    DateTime lastScan = HttpDate.parse(user.data.lastScan);
+    DateTime lastScan = HttpDate.parse("user.data.lastScan");
+    // DateTime lastScan = HttpDate.parse(user.data.lastScan);
     Duration remaining = DateTime.now().difference(lastScan);
 // generate random int
     Timer.periodic(
@@ -110,7 +111,7 @@ class _FootprintState extends State<Footprint> {
           : Center(
               child: TextButton(
                 onPressed: () async {
-                  update(user.data.username);
+                  update(user.data!.username);
                   Provider.of<Users>(context, listen: false)
                       .users(username: user.data.username);
                   setState(() => isCam = true);

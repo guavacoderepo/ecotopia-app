@@ -39,7 +39,7 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         backgroundColor: transparent,
         elevation: 0,
-        title: f5("${user.data.username} Cart", 16),
+        title: f5("${user.data!.username} Cart", 16),
 
         // cart icon
         actions: [
@@ -47,7 +47,7 @@ class _CartState extends State<Cart> {
           Padding(
             padding: const EdgeInsets.only(right: 10, top: 15),
             child: Badge(
-              label: Text(user.data.cart.length.toString()),
+              label: Text(user.data!.cart!.length.toString()),
               backgroundColor: deepgreen,
               child: const Icon(
                 Icons.shopping_cart_outlined,
@@ -70,9 +70,9 @@ class _CartState extends State<Cart> {
                   backgroundColor: deepgreen,
                   iconColor: white,
                 ),
-                onPressed: user.data.cart.isEmpty
+                onPressed: user.data!.cart!.isEmpty
                     ? null
-                    : () async => paymentdialog(user.data.username, token),
+                    : () async => paymentdialog(user.data!.username, token),
                 icon: const Icon(Icons.payment),
                 label: f5("Pay", 14, color: white),
               ),
@@ -92,7 +92,7 @@ class _CartState extends State<Cart> {
 // cart body
       body: FutureBuilder<Cartclass>(
         // future builder
-        future: checkoutcart(user.data.username),
+        future: checkoutcart(user.data!.username),
         builder: (context, snap) {
           if (snap.hasData) {
             // create data
@@ -106,7 +106,7 @@ class _CartState extends State<Cart> {
                   })
                 : null;
 // check if cart is empty
-            if (user.data.cart.isEmpty) {
+            if (user.data!.cart!.isEmpty) {
               return Center(
                 child: Image.asset("assets/emptycart.webp"),
               );
@@ -176,7 +176,7 @@ class _CartState extends State<Cart> {
                               ),
                               // add to cart function
                               onPressed: () async => await deletedialog(
-                                  user.data.username, data[i].id),
+                                  user.data!.username, data[i].id),
                               icon: const Icon(Icons.delete),
                               label: f5("Remove from cart", 14, color: white),
                             ),

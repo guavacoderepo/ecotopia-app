@@ -67,7 +67,7 @@ class _StoreState extends State<Store> {
               padding: const EdgeInsets.only(right: 10, top: 15),
               child: InkWell(
                 child: Badge(
-                  label: Text(user.data.cart.length.toString()),
+                  label: Text(user.data!.cart!.length.toString()),
                   backgroundColor: deepgreen,
                   child: const Icon(
                     Icons.shopping_cart_outlined,
@@ -85,7 +85,7 @@ class _StoreState extends State<Store> {
             // total cart price
             Padding(
               padding: const EdgeInsets.only(right: 10, top: 15),
-              child: f1("∆${user.data.balance.toStringAsFixed(2)}", 15,
+              child: f1("∆${user.data!.balance!.toStringAsFixed(2)}", 15,
                   color: blacklight),
             )
           ],
@@ -163,7 +163,7 @@ class _StoreState extends State<Store> {
                                     minWidth: 5,
                                     color: deepgreen,
                                     onPressed: () async {
-                                      cart(user.data.username, data[i].id, 1)
+                                      cart(user.data!.username, data[i].id, 1)
                                           .then((value) {
                                         Provider.of<Users>(context,
                                                 listen: false)
