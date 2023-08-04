@@ -165,9 +165,9 @@ class _StoreState extends State<Store> {
                                     onPressed: () async {
                                       cart(user.data!.username, data[i].id, 1)
                                           .then((value) {
-                                        Provider.of<Users>(context,
-                                                listen: false)
-                                            .users(username: user.data.username);
+                                        // Provider.of<Users>(context,
+                                        //         listen: false)
+                                        //     .users(username: user.data.username);
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

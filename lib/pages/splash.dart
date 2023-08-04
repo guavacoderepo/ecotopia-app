@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:technovationapp/screens/register.dart';
+import 'package:technovationapp/screens/login.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
       const Duration(seconds: 3),
       () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const Register()),
+        MaterialPageRoute(builder: (context) => const Login()),
       ),
     );
 

@@ -167,8 +167,8 @@ class _ProductState extends State<Product> {
                   onPressed: () async {
                     cart(user.data!.username, widget.item.id, quantity)
                         .then((value) {
-                      Provider.of<Users>(context, listen: false)
-                          .users(username: user.data.username);
+                      // Provider.of<Users>(context, listen: false)
+                      //     .users(username: user.data.username);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: f5("Added to cart", 12, color: white),

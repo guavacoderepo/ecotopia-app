@@ -112,8 +112,8 @@ class _FootprintState extends State<Footprint> {
               child: TextButton(
                 onPressed: () async {
                   update(user.data!.username);
-                  Provider.of<Users>(context, listen: false)
-                      .users(username: user.data.username);
+                  // Provider.of<Users>(context, listen: false)
+                  //     .users(username: user.data.username);
                   setState(() => isCam = true);
                 },
                 child: text("Continue", 14),

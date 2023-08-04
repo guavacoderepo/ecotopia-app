@@ -26,24 +26,29 @@ class _LoginState extends State<Login> {
 
   // button submit clicked
   Future _onSubmit() async {
-    FocusScope.of(context).unfocus();
+    // FocusScope.of(context).unfocus();
     _loadingState(true);
 
     // check if admin login
-    if (_usernamecontroller.text.trim() == "admin" &&
-        _pwdcontroller.text.trim() == "00000") {
-      // print admin
+    // if (_usernamecontroller.text.trim() == "admin" &&
+    //     _pwdcontroller.text.trim() == "00000") {
+    //   // print admin
+    //   _loadingState(false);
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       content: f5("Admin login Successful", 12, color: white),
+    //     ),
+    //   );
+    //   Provider.of<Users>(context, listen: false).user;
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => const Dashboard()),
+    //   );
+    //   return;
+    // }
+
+    if (_usernamecontroller.text.isEmpty || _pwdcontroller.text.isEmpty) {
       _loadingState(false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: f5("Admin login Successful", 12, color: white),
-        ),
-      );
-      Provider.of<Users>(context, listen: false).user;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const Dashboard()),
-      );
       return;
     }
 
@@ -124,12 +129,9 @@ class _LoginState extends State<Login> {
                             weight: FontWeight.w600, color: deepgreen),
                       ),
                       vgap(15),
-                      inputbox("Username|Email", 
-                          _usernamecontroller),
+                      inputbox("Username|Email", _usernamecontroller),
                       vgap(15),
-                      inputbox(
-                          "Password",  _pwdcontroller,
-                          obs: true),
+                      inputbox("Password", _pwdcontroller, obs: true),
                       vgap(15),
                       Row(
                         children: [
