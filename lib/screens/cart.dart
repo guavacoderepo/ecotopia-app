@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:technovationapp/constants/font.dart';
+import 'package:technovationapp/utilities/font.dart';
 import 'package:technovationapp/modules/checkout.dart';
 import 'package:technovationapp/modules/deletecart.dart';
 import 'package:technovationapp/modules/storepayclass.dart';

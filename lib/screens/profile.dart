@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import '../constants/colors.dart';
-import '../constants/font.dart';
+import '../utilities/font.dart';
 import '../modules/usersclass.dart';
 
 class Profile extends StatefulWidget {

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:technovationapp/modules/coin.dart';
 import '../constants/colors.dart';
-import '../constants/font.dart';
+import '../utilities/font.dart';
 import '../modules/usersclass.dart';
 
 late List<CameraDescription> _cameras;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:technovationapp/constants/colors.dart';
-import 'package:technovationapp/constants/font.dart';
+import 'package:technovationapp/utilities/font.dart';
 
 class Contribute extends StatelessWidget {
   const Contribute({super.key});

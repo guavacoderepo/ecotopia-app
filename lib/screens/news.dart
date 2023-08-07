@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
-import '../constants/font.dart';
+import '../utilities/font.dart';
 
 class Newspage extends StatefulWidget {
   const Newspage({super.key});

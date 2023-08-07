@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:technovationapp/constants/textfield.dart';
+import 'package:technovationapp/utilities/textfield.dart';
 import 'package:technovationapp/modules/bankcheckout.dart';
 import 'package:technovationapp/modules/usersclass.dart';
 import 'package:technovationapp/screens/dashboard.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import '../constants/colors.dart';
-import '../constants/font.dart';
+import '../utilities/font.dart';
 import 'package:uuid/uuid.dart';
 
 class BankPayment extends StatefulWidget {

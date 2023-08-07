@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:technovationapp/constants/colors.dart';
-import 'package:technovationapp/constants/font.dart';
+import 'package:technovationapp/utilities/font.dart';
 import 'package:technovationapp/modules/addcart.dart';
 import 'package:technovationapp/modules/storeclass.dart';
 import 'package:technovationapp/modules/usersclass.dart';

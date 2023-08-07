@@ -3,8 +3,8 @@ import 'package:technovationapp/constants/colors.dart';
 import 'package:technovationapp/modules/registerclass.dart';
 import 'package:technovationapp/screens/login.dart';
 import 'package:technovationapp/utilities/variables.dart';
-import '../constants/font.dart';
-import '../constants/textfield.dart';
+import '../utilities/font.dart';
+import '../utilities/textfield.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});

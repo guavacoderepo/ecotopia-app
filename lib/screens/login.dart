@@ -5,8 +5,8 @@ import 'package:technovationapp/screens/dashboard.dart';
 import 'package:technovationapp/screens/register.dart';
 import 'package:technovationapp/utilities/shareprefrence.dart';
 import '../constants/colors.dart';
-import '../constants/font.dart';
-import '../constants/textfield.dart';
+import '../utilities/font.dart';
+import '../utilities/textfield.dart';
 import '../modules/usersclass.dart';
 import '../utilities/variables.dart';
 
