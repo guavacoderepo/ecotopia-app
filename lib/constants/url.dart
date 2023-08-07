@@ -1,5 +1,6 @@
 // const String baseUrl = "http://192.168.253.22:5000";
-const String baseUrl = "https://ecotopiaapp-dqmosooj7-guavacodeplus.vercel.app";
+
+const String baseUrl = "https://ecotopiaapp.vercel.app";
 
 const String fetchStoreData = "/api/v1/store/products";
 
@@ -19,4 +20,4 @@ const String storepayment = "/api/v1/cart/payment/";
 
 const String bankcheckoutpay = "/api/v1/payment/checkout/";
 
-
+const String me = "/api/v1/auth/me";

@@ -15,7 +15,7 @@ late List<CameraDescription> _cameras;
 /// Footprint is the Main Application.
 class Footprint extends StatefulWidget {
   /// Default Constructor
-  Footprint(this.cameras, {Key? key}) : super(key: key);
+  const Footprint(this.cameras, {Key? key}) : super(key: key);
   final List<CameraDescription> cameras;
 
   @override
