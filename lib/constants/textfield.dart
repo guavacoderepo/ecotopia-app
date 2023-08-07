@@ -4,7 +4,7 @@ import 'package:technovationapp/constants/colors.dart';
 Widget inputbox(hint, controller,
     {bool obs = false, TextInputType keyboard = TextInputType.text}) {
   return TextField(
-    style: const TextStyle(fontSize: 15, color: blacklight),
+    style: const TextStyle(fontSize: 12, color: blacklight),
     decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(left: 20, right: 20),
         filled: true,
@@ -21,7 +21,7 @@ Widget inputbox(hint, controller,
 
 Widget quantitybox() {
   return const TextField(
-    style: TextStyle(fontSize: 15, color: palewhite),
+    style: TextStyle(fontSize: 12, color: palewhite),
     decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: white),

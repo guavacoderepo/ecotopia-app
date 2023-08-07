@@ -8,6 +8,7 @@ import 'package:technovationapp/modules/usersclass.dart';
 import 'package:technovationapp/screens/cart.dart';
 import 'package:technovationapp/screens/product.dart';
 import 'package:technovationapp/utilities/variables.dart';
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 
 class Store extends StatefulWidget {
   const Store({super.key});
@@ -26,6 +27,7 @@ class _StoreState extends State<Store> {
         appBar: AppBar(
           backgroundColor: transparent,
           elevation: 0,
+          title: text("Eco Store", 16, color: black),
           // title: SizedBox(
           //   height: 35,
           //   // search filed
@@ -97,15 +99,12 @@ class _StoreState extends State<Store> {
             future: storedata(),
             builder: (context, snap) {
               if (snap.hasData) {
-                return GridView.builder(
+                return DynamicHeightGridView(
                   itemCount: snap.data!.data.length,
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      mainAxisExtent: 260,
-                      childAspectRatio: 1,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10),
-                  itemBuilder: (context, i) {
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  builder: (context, i) {
                     // create instabce of snap data
                     var data = snap.data!.data;
                     return InkWell(

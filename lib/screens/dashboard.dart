@@ -11,6 +11,7 @@ import 'package:technovationapp/screens/news.dart';
 import 'package:technovationapp/screens/profile.dart';
 import 'package:technovationapp/screens/store.dart';
 import 'package:technovationapp/utilities/variables.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:camera/camera.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -51,12 +52,11 @@ class _DashboardState extends State<Dashboard> {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('EEE d MMMM, y').format(now);
     return Scaffold(
-      backgroundColor: lightwhite,
+      // backgroundColor: lightwhite,
       appBar: AppBar(
         backgroundColor: transparent,
         elevation: 0,
-        title: text("Hello, ${user.data!.username}", 18,
-            color: black, weight: FontWeight.w600),
+        title: text("Hello, ${user.data!.username}", 16, color: black),
         leading: Padding(
           padding: const EdgeInsets.all(5),
           child: CircleAvatar(
@@ -165,59 +165,53 @@ class _DashboardState extends State<Dashboard> {
 
               vgap(20),
 
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.45,
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
-                  children: [
+              StaggeredGrid.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                children: [
+                  cardDesign(
+                    context,
+                    const Color(0xff637BFF),
+                    "Footprint",
+                    Icons.calculate_outlined,
+                    () => cameraDetection(),
+                  ),
 // footprint section
-
-                    cardDesign(
+                  cardDesign(
+                    context,
+                    const Color(0xffF19A1A),
+                    "Store",
+                    Icons.shopping_cart_outlined,
+                    () => Navigator.push(
                       context,
-                      const Color(0xff637BFF),
-                      "Footprint",
-                      Icons.calculate_outlined,
-                      () => cameraDetection(),
-                    ),
-// footprint section
-                    cardDesign(
-                      context,
-                      const Color(0xffF19A1A),
-                      "Store",
-                      Icons.shopping_cart_outlined,
-                      () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Store(),
-                        ),
+                      MaterialPageRoute(
+                        builder: (context) => const Store(),
                       ),
                     ),
+                  ),
 // enterntainment section
-                    cardDesign(
-                      context,
-                      const Color(0xff21C8F6),
-                      "Entertainment",
-                      Icons.queue_music_rounded,
-                      () => _launchUrl(),
-                    ),
+                  cardDesign(
+                    context,
+                    const Color(0xff21C8F6),
+                    "Entertainment",
+                    Icons.queue_music_rounded,
+                    () => _launchUrl(),
+                  ),
 // news section
-                    cardDesign(
+                  cardDesign(
+                    context,
+                    const Color(0xff4CD964),
+                    "News",
+                    Icons.newspaper_rounded,
+                    () => Navigator.push(
                       context,
-                      const Color(0xff4CD964),
-                      "News",
-                      Icons.newspaper_rounded,
-                      () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Newspage(),
-                        ),
+                      MaterialPageRoute(
+                        builder: (context) => const Newspage(),
                       ),
-                    )
-// end of card
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ],
           ),
@@ -233,13 +227,11 @@ Widget weather(date) {
     // margin: const EdgeInsets.all(10),
     width: double.infinity,
     height: 150,
-    decoration: BoxDecoration(
-      color: white,
-      image: const DecorationImage(
+    decoration: const BoxDecoration(
+      image: DecorationImage(
         image: AssetImage("assets/img/ecoweather.png"),
         fit: BoxFit.cover,
       ),
-      borderRadius: BorderRadius.circular(10),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -271,7 +263,13 @@ cardDesign(context, Color color, title, IconData icon, Function callback) =>
     InkWell(
       onTap: () async => callback(),
       child: Container(
-        color: color.withOpacity(0.2),
+        decoration: BoxDecoration(
+          // color: color.withOpacity(0.2),
+          border: Border.all(
+            color: const Color(0xffCDD2DE),
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
         padding: const EdgeInsets.all(10),
         width: MediaQuery.of(context).size.width / 2.25,
         height: MediaQuery.of(context).size.width / 2.2,

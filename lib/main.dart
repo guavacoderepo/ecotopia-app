@@ -9,7 +9,7 @@ void main() => runApp(
         create: (_) => Users(),
         child: MaterialApp(
             theme: ThemeData(
-              fontFamily: 'oxygen',
+              fontFamily: 'poppins',
               primaryColorDark: black,
               primaryColor: black,
               inputDecorationTheme: const InputDecorationTheme(

@@ -9,9 +9,11 @@ const Color white = Colors.white;
 const Color palewhite = Color.fromARGB(255, 231, 229, 229);
 const Color black = Colors.black;
 const Color blacklight = Color(0xff1C1B1B);
-const Color lightwhite = Color.fromARGB(255, 237, 237, 240);
+// const Color lightwhite = Color.fromARGB(255, 237, 237, 240);
 const Color transparent = Colors.transparent;
 
 const Color deepgreen = Color(0xff62BD2F);
 const Color primary = Color(0xffE5E5E5);
 const Color textgrey = Color(0xffB1B1B1);
+
+const Color lightwhite = Colors.white;
