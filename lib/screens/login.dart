@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:technovationapp/modules/loginclass.dart';
+import 'package:technovationapp/requestmodels/loginclass.dart';
 import 'package:technovationapp/screens/dashboard.dart';
 import 'package:technovationapp/screens/register.dart';
 import 'package:technovationapp/utilities/shareprefrence.dart';
 import '../constants/colors.dart';
 import '../utilities/font.dart';
 import '../utilities/textfield.dart';
-import '../modules/usersclass.dart';
+import '../requestmodels/usersclass.dart';
 import '../utilities/variables.dart';
 
 class Login extends StatefulWidget {

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:technovationapp/models/store.model.dart';
+import 'package:technovationapp/models/user.model.dart';
 import 'package:technovationapp/utilities/font.dart';
-import 'package:technovationapp/modules/storeclass.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import '../constants/colors.dart';
-import '../modules/addcart.dart';
-import '../modules/usersclass.dart';
+import '../requestmodels/addcart.dart';
+import '../requestmodels/usersclass.dart';
 import 'cart.dart';
 
 class Product extends StatefulWidget {

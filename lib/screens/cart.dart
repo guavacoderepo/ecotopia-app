@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:technovationapp/models/cart.model.dart';
+import 'package:technovationapp/models/user.model.dart';
 import 'package:technovationapp/utilities/font.dart';
-import 'package:technovationapp/modules/checkout.dart';
-import 'package:technovationapp/modules/deletecart.dart';
-import 'package:technovationapp/modules/storepayclass.dart';
-import 'package:technovationapp/modules/usersclass.dart';
+import 'package:technovationapp/requestmodels/checkout.dart';
+import 'package:technovationapp/requestmodels/deletecart.dart';
+import 'package:technovationapp/requestmodels/storepayclass.dart';
+import 'package:technovationapp/requestmodels/usersclass.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import '../constants/colors.dart';
 import 'package:uuid/uuid.dart';

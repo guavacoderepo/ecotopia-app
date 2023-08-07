@@ -1,41 +1,36 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:technovationapp/constants/url.dart';
 
-class Cartclass {
-  Cartclass({
+class StoreClass {
+  StoreClass({
     required this.data,
     required this.message,
-    required this.price,
     required this.status,
   });
 
-  List<Datum> data;
+  List<Item> data;
   String message;
-  double price;
   bool status;
 
-  factory Cartclass.fromJson(String str) => Cartclass.fromMap(json.decode(str));
+  factory StoreClass.fromJson(String str) =>
+      StoreClass.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Cartclass.fromMap(Map<String, dynamic> json) => Cartclass(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromMap(x))),
+  factory StoreClass.fromMap(Map<String, dynamic> json) => StoreClass(
+        data: List<Item>.from(json["data"].map((x) => Item.fromMap(x))),
         message: json["message"],
-        price: json["price"].toDouble(),
         status: json["status"],
       );
 
   Map<String, dynamic> toMap() => {
         "data": List<dynamic>.from(data.map((x) => x.toMap())),
         "message": message,
-        "price": price,
         "status": status,
       };
 }
 
-class Datum {
-  Datum({
+class Item {
+  Item({
     required this.category,
     required this.createdAt,
     required this.description,
@@ -55,11 +50,11 @@ class Datum {
   int quantity;
   String title;
 
-  factory Datum.fromJson(String str) => Datum.fromMap(json.decode(str));
+  factory Item.fromJson(String str) => Item.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Datum.fromMap(Map<String, dynamic> json) => Datum(
+  factory Item.fromMap(Map<String, dynamic> json) => Item(
         category: json["Category"],
         createdAt: json["Created_at"],
         description: json["Description"],
@@ -80,27 +75,4 @@ class Datum {
         "Quantity": quantity,
         "Title": title,
       };
-}
-
-Future<Cartclass> checkoutcart(user) async {
-  var client = http.Client();
-  // print(userid);
-  // print(productid);
-  try {
-    var request = await client.post(
-      Uri.parse(baseUrl + cartcheckout),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode({"Username": user}),
-    );
-    // print(request.body);
-    if (request.statusCode == 200) {
-      return Cartclass.fromMap(json.decode(request.body));
-    } else {
-      return Cartclass.fromMap(json.decode(request.body));
-    }
-  } finally {
-    client.close();
-  }
 }

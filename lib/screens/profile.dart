@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:technovationapp/models/user.model.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import '../constants/colors.dart';
 import '../utilities/font.dart';
-import '../modules/usersclass.dart';
+import '../requestmodels/usersclass.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

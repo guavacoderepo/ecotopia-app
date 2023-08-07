@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:technovationapp/constants/colors.dart';
-import 'package:technovationapp/modules/registerclass.dart';
+import 'package:technovationapp/requestmodels/registerclass.dart';
 import 'package:technovationapp/screens/login.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import '../utilities/font.dart';

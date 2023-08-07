@@ -5,10 +5,10 @@ import 'dart:math';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:technovationapp/modules/coin.dart';
+import 'package:technovationapp/requestmodels/coin.dart';
 import '../constants/colors.dart';
 import '../utilities/font.dart';
-import '../modules/usersclass.dart';
+import '../requestmodels/usersclass.dart';
 
 late List<CameraDescription> _cameras;
 
