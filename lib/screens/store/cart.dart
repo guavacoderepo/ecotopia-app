@@ -7,8 +7,9 @@ import 'package:technovationapp/requestmodels/checkout.dart';
 import 'package:technovationapp/requestmodels/deletecart.dart';
 import 'package:technovationapp/requestmodels/storepayclass.dart';
 import 'package:technovationapp/requestmodels/usersclass.dart';
+import 'package:technovationapp/utilities/router.dart';
 import 'package:technovationapp/utilities/variables.dart';
-import '../constants/colors.dart';
+import '../../constants/colors.dart';
 import 'package:uuid/uuid.dart';
 
 class Cart extends StatefulWidget {
@@ -279,16 +280,17 @@ class _CartState extends State<Cart> {
         );
       },
     );
-    await makepayment(username, token).then(
-      (value) {
+    
+    makepayment(username, token).then(
+      (value) async {
         if (value["status"] == true) {
-          Provider.of<Users>(context, listen: false).users(username: username);
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: f5("payment successful", 12, color: white),
-            ),
-          );
+          await users(context).then((value) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: f5("payment successful", 12, color: white),
+              ),
+            );
+          });
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -320,11 +322,11 @@ class _CartState extends State<Cart> {
       },
     );
 
-    await deletecart(userid, productid).then((value) {
+    deletecart(userid, productid).then((value) async {
       if (value["status"] == true) {
-        Provider.of<Users>(context, listen: false).users(username: userid);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const Cart()));
+        await users(context).then((value) {
+          pushReplacement(context, const Cart());
+        });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

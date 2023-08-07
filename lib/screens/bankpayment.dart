@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:technovationapp/utilities/router.dart';
 import 'package:technovationapp/utilities/textfield.dart';
 import 'package:technovationapp/requestmodels/bankcheckout.dart';
 import 'package:technovationapp/requestmodels/usersclass.dart';
@@ -152,18 +153,18 @@ class _BankPaymentState extends State<BankPayment> {
   }
 
   payment(bank, token, username, name, amount) async =>
-      bankpay(bank, token, username, name, amount).then((value) {
+      bankpay(bank, token, username, name, amount).then((value) async {
         if (value["status"] == true) {
-          Provider.of<Users>(context, listen: false).users(username: username);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: f5("Transfer successful.", 12, color: white),
-            ),
-          );
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => const Dashboard()),
-              (route) => false);
+          await users(context).then((value) {
+            // show success message
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: f5("Transfer successful.", 12, color: white),
+              ),
+            );
+            // go back to dashboard page
+            pushUntil(context, const Dashboard());
+          });
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

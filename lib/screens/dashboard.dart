@@ -10,7 +10,7 @@ import 'package:technovationapp/screens/donate.dart';
 import 'package:technovationapp/screens/footprint.dart';
 import 'package:technovationapp/screens/news.dart';
 import 'package:technovationapp/screens/profile.dart';
-import 'package:technovationapp/screens/store.dart';
+import 'package:technovationapp/screens/store/store.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';

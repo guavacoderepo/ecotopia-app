@@ -7,8 +7,8 @@ import 'package:technovationapp/utilities/font.dart';
 import 'package:technovationapp/requestmodels/addcart.dart';
 import 'package:technovationapp/requestmodels/storeclass.dart';
 import 'package:technovationapp/requestmodels/usersclass.dart';
-import 'package:technovationapp/screens/cart.dart';
-import 'package:technovationapp/screens/product.dart';
+import 'package:technovationapp/screens/store/cart.dart';
+import 'package:technovationapp/screens/store/product.dart';
 import 'package:technovationapp/utilities/variables.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 
@@ -166,16 +166,15 @@ class _StoreState extends State<Store> {
                                     onPressed: () async {
                                       cart(user.data!.username, data[i].id, 1)
                                           .then((value) {
-                                        // Provider.of<Users>(context,
-                                        //         listen: false)
-                                        //     .users(username: user.data.username);
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: f5("Added to cart", 12,
-                                                color: white),
-                                          ),
-                                        );
+                                        users(context).then((value) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: f5("Added to cart", 12,
+                                                  color: white),
+                                            ),
+                                          );
+                                        });
                                       });
                                     },
                                     child: const Icon(Icons.add, color: white)),

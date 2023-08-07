@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:technovationapp/requestmodels/loginclass.dart';
 import 'package:technovationapp/screens/dashboard.dart';
-import 'package:technovationapp/screens/register.dart';
+import 'package:technovationapp/screens/onboarding/register.dart';
+import 'package:technovationapp/utilities/router.dart';
 import 'package:technovationapp/utilities/shareprefrence.dart';
-import '../constants/colors.dart';
-import '../utilities/font.dart';
-import '../utilities/textfield.dart';
-import '../requestmodels/usersclass.dart';
-import '../utilities/variables.dart';
+import '../../constants/colors.dart';
+import '../../utilities/font.dart';
+import '../../utilities/textfield.dart';
+import '../../requestmodels/usersclass.dart';
+import '../../utilities/variables.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -26,7 +27,7 @@ class _LoginState extends State<Login> {
 
   // button submit clicked
   Future _onSubmit() async {
-    // FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
     _loadingState(true);
 
     if (_usernamecontroller.text.isEmpty || _pwdcontroller.text.isEmpty) {
@@ -47,14 +48,14 @@ class _LoginState extends State<Login> {
         // navigate to login
         var user = response["data"]["Username"];
 
-        // print(useraddresss);
-        await save(user);
+// ###############
+        Provider.of<Users>(context, listen: false).setUser(user);
 
+        // print(useraddresss);
+        save(user);
+
+        pushReplacement(context, const Dashboard());
 // ###############
-        Provider.of<Users>(context, listen: false).users(username: user);
-// ###############
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const Dashboard()));
       } else {
         // error
         ScaffoldMessenger.of(context).showSnackBar(
@@ -80,17 +81,14 @@ class _LoginState extends State<Login> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/img/ecobg.png"), fit: BoxFit.cover)),
+          image: DecorationImage(
+              image: AssetImage("assets/img/ecobg.png"), fit: BoxFit.cover),
+        ),
         child: Scaffold(
           backgroundColor: transparent,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            // title: Image.asset(
-            //   "assets/logo.png",
-            //   height: 65,
-            // ),
           ),
           body: CustomScrollView(
             slivers: [
@@ -146,17 +144,6 @@ class _LoginState extends State<Login> {
                             : f7("Login", 15, color: Colors.white),
                       ),
                       vgap(40),
-                      // SizedBox(
-                      //   width: MediaQuery.of(context).size.width,
-                      //   child: IconButton(
-                      //     onPressed: () {},
-                      //     icon: Icon(
-                      //       Icons.fingerprint_rounded,
-                      //       color: white.withOpacity(0.4),
-                      //       size: 70,
-                      //     ),
-                      //   ),
-                      // ),
                       vgap(70)
                     ],
                   ),

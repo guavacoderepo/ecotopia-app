@@ -4,9 +4,9 @@ import 'package:technovationapp/models/store.model.dart';
 import 'package:technovationapp/models/user.model.dart';
 import 'package:technovationapp/utilities/font.dart';
 import 'package:technovationapp/utilities/variables.dart';
-import '../constants/colors.dart';
-import '../requestmodels/addcart.dart';
-import '../requestmodels/usersclass.dart';
+import '../../constants/colors.dart';
+import '../../requestmodels/addcart.dart';
+import '../../requestmodels/usersclass.dart';
 import 'cart.dart';
 
 class Product extends StatefulWidget {
@@ -168,13 +168,14 @@ class _ProductState extends State<Product> {
                   onPressed: () async {
                     cart(user.data!.username, widget.item.id, quantity)
                         .then((value) {
-                      // Provider.of<Users>(context, listen: false)
-                      //     .users(username: user.data.username);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: f5("Added to cart", 12, color: white),
-                        ),
-                      );
+                      users(context).then((value) {
+                        // diaplay added when added to cart successful
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: f5("Added to cart", 12, color: white),
+                          ),
+                        );
+                      });
                     });
                   },
                   icon: const Icon(Icons.shopping_cart_outlined),

@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:technovationapp/models/user.model.dart';
 import '../constants/url.dart';
+import '../utilities/shareprefrence.dart';
 
+Future users(context) async {
+  String user = await readprefs();
+  var client = http.Client();
+
+  try {
+    var request = await client.post(
+      Uri.parse(baseUrl + userprofile),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        "Username": user,
+      }),
+    );
+    // print(request.body);
+
+    if (request.statusCode == 200) {
+      Usersclass result = Usersclass.fromMap(json.decode(request.body));
+      // print(_user);
+
+      Provider.of<Users>(context, listen: false).setUser(result);
+      // print(_user.data.cart.length);
+    } else {
+      // notifyListeners();
+    }
+  } finally {
+    client.close();
+  }
+}
 
 // user class
 // ##################################################
@@ -12,32 +43,9 @@ class Users extends ChangeNotifier {
 
   Usersclass get user => _user;
 
-  Future users({String username = ""}) async {
-    var client = http.Client();
-
-    try {
-      var request = await client.post(
-        Uri.parse(baseUrl + userprofile),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode({
-          "Username": username,
-        }),
-      );
-      // print(request.body);
-
-      if (request.statusCode == 200) {
-        _user = Usersclass.fromMap(json.decode(request.body));
-        // print(_user);
-        // print(_user.data.cart.length);
-        notifyListeners();
-      } else {
-        // notifyListeners();
-      }
-    } finally {
-      client.close();
-    }
+  void setUser(Usersclass user) {
+    _user = user;
+    notifyListeners();
   }
 }
 

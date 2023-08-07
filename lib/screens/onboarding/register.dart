@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:technovationapp/constants/colors.dart';
 import 'package:technovationapp/requestmodels/registerclass.dart';
-import 'package:technovationapp/screens/login.dart';
+import 'package:technovationapp/screens/onboarding/login.dart';
+import 'package:technovationapp/utilities/router.dart';
 import 'package:technovationapp/utilities/variables.dart';
-import '../utilities/font.dart';
-import '../utilities/textfield.dart';
+import '../../utilities/font.dart';
+import '../../utilities/textfield.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -57,8 +58,7 @@ class _RegisterState extends State<Register> {
           ),
         );
         // navigate to login
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Login()));
+        push(context, const Login());
       } else {
         // error
         ScaffoldMessenger.of(context).showSnackBar(
@@ -77,17 +77,14 @@ class _RegisterState extends State<Register> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/img/ecobg.png"), fit: BoxFit.cover)),
+          image: DecorationImage(
+              image: AssetImage("assets/img/ecobg.png"), fit: BoxFit.cover),
+        ),
         child: Scaffold(
           backgroundColor: transparent,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            // title: Image.asset(
-            //   "assets/logo.png",
-            //   height: 65,
-            // ),
           ),
           body: CustomScrollView(
             slivers: [
@@ -154,8 +151,10 @@ class _RegisterState extends State<Register> {
                       Align(
                         alignment: Alignment.center,
                         child: InkWell(
-                          onTap: () => Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) => Login())),
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Login())),
                           child: Row(
                             // crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
