@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:technovationapp/requestmodels/loginclass.dart';
 import 'package:technovationapp/screens/dashboard.dart';
 import 'package:technovationapp/screens/onboarding/register.dart';
@@ -38,23 +37,26 @@ class _LoginState extends State<Login> {
     // users login auth
     login(_usernamecontroller.text, _pwdcontroller.text).then((response) async {
       // check if successful
+
       if (response["status"] == true) {
-        _loadingState(false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: f5("Login Successful", 12, color: white),
-          ),
-        );
         // navigate to login
-        var user = response["data"]["Username"];
+        String user = response["data"]["Username"];
 
-// ###############
-        Provider.of<Users>(context, listen: false).setUser(user);
-
-        // print(useraddresss);
         save(user);
 
-        pushReplacement(context, const Dashboard());
+// ###############
+        users(context).then((value) {
+          _loadingState(false);
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: f5("Login Successful", 12, color: white),
+            ),
+          );
+
+          pushReplacement(context, const Dashboard());
+        });
+
 // ###############
       } else {
         // error

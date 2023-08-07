@@ -16,12 +16,14 @@ Future login(user, pwd) async {
         "Password": pwd,
       }),
     );
-    
+
     // print(request.body);
     if (request.statusCode == 200) {
-      return json.decode(request.body);
+      final Map<String, dynamic> responseData = json.decode(request.body);
+      return responseData;
     } else {
-      return json.decode(request.body);
+      final Map<String, dynamic> responseData = json.decode(request.body);
+      return responseData;
     }
   } finally {
     client.close();

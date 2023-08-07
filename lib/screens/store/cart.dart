@@ -28,7 +28,7 @@ class _CartState extends State<Cart> {
   @override
   void initState() {
     setState(() {
-      token = Uuid().v4();
+      token = const Uuid().v4();
     });
     // print(token);
     super.initState();
@@ -222,11 +222,8 @@ class _CartState extends State<Cart> {
           ),
           actions: <Widget>[
             TextButton(
-              child: f1("Yes", 14, color: deepgreen),
-              onPressed: () async {
-                delete(userid, productid);
-              },
-            ),
+                child: f1("Yes", 14, color: deepgreen),
+                onPressed: () => delete(userid, productid)),
           ],
         );
       },
@@ -280,7 +277,7 @@ class _CartState extends State<Cart> {
         );
       },
     );
-    
+
     makepayment(username, token).then(
       (value) async {
         if (value["status"] == true) {
