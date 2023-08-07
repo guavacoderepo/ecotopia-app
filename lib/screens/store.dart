@@ -189,6 +189,7 @@ class _StoreState extends State<Store> {
                 return const Center(
                   child: CircularProgressIndicator(
                     color: deepgreen,
+                    strokeWidth: 2,
                   ),
                 );
               }

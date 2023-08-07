@@ -90,7 +90,12 @@ class _NewspageState extends State<Newspage> {
                     // news short description
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2.1,
-                      child: f6(title[i], 12, color: black),
+                      child: f6(
+                        title[i],
+                        12,
+                        color: black,
+                        weight: FontWeight.w300,
+                      ),
                     ),
                     f7("bbc.com", 11, color: deepgreen),
                   ],

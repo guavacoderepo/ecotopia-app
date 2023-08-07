@@ -29,24 +29,6 @@ class _LoginState extends State<Login> {
     // FocusScope.of(context).unfocus();
     _loadingState(true);
 
-    // check if admin login
-    // if (_usernamecontroller.text.trim() == "admin" &&
-    //     _pwdcontroller.text.trim() == "00000") {
-    //   // print admin
-    //   _loadingState(false);
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(
-    //       content: f5("Admin login Successful", 12, color: white),
-    //     ),
-    //   );
-    //   Provider.of<Users>(context, listen: false).user;
-    //   Navigator.pushReplacement(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => const Dashboard()),
-    //   );
-    //   return;
-    // }
-
     if (_usernamecontroller.text.isEmpty || _pwdcontroller.text.isEmpty) {
       _loadingState(false);
       return;
@@ -126,7 +108,7 @@ class _LoginState extends State<Login> {
                       Align(
                         alignment: Alignment.topCenter,
                         child: text("Login", 18,
-                            weight: FontWeight.w600, color: deepgreen),
+                            weight: FontWeight.w500, color: deepgreen),
                       ),
                       vgap(15),
                       inputbox("Username|Email", _usernamecontroller),

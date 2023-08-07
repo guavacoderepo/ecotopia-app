@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:technovationapp/constants/colors.dart';
 import 'package:technovationapp/constants/font.dart';
 
-
 class Contribute extends StatelessWidget {
   const Contribute({super.key});
 
@@ -12,12 +11,12 @@ class Contribute extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: transparent,
         elevation: 0,
-        title: f7("How to Contribute", 16, color: deepgreen),
+        title: f7("How to Contribute", 16, color: black),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
-            color: deepgreen,
+            color: black,
           ),
         ),
       ),
@@ -29,8 +28,9 @@ class Contribute extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              f4("ECoins is the in-app currency on EcoTopia that can be used to make in-app purchases on the app store or can be transferred to your commercial bank  account (ta lower exchange rate). ",
-                  15),
+              f4("ECoins is the in-app currency on EcoTopia that can be used to make in-app purchases on the app store or can be transferred to your commercial bank  account (to lower exchange rate). ",
+                  14,
+                  weight: FontWeight.w300, color: black),
               const SizedBox(height: 30),
               cardDesign(context, "1", "assets/img/img1.png",
                   "Identify an outlet around you"),
@@ -39,7 +39,7 @@ class Contribute extends StatelessWidget {
                   "Bring recyclables to the outlet"),
               const SizedBox(height: 10),
               cardDesign(context, "3", "assets/img/img3.png",
-                  "Your plastic will be exchanged to coin")
+                  "Your material will be exchanged to coin")
             ],
           ),
         ),
@@ -69,7 +69,10 @@ class Contribute extends StatelessWidget {
                   height: 50,
                   child: Center(child: f1(number, 20, color: black)),
                 ),
-                f4(title, 13),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: f4(title, 13, color: black, weight: FontWeight.w300),
+                ),
                 const SizedBox(width: 5)
               ],
             ),

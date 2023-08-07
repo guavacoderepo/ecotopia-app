@@ -106,7 +106,7 @@ class _RegisterState extends State<Register> {
                       Align(
                         alignment: Alignment.topCenter,
                         child: text("Create Account", 18,
-                            weight: FontWeight.w600, color: deepgreen),
+                            weight: FontWeight.w500, color: deepgreen),
                       ),
                       vgap(15),
                       inputbox("Full Name", _namecontroller),
