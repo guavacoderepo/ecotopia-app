@@ -75,7 +75,10 @@ class _BankPaymentState extends State<BankPayment> {
                     keyboard: TextInputType.number),
                 vgap(10),
                 DecoratedBox(
-                  decoration: const BoxDecoration(color: white),
+                  decoration: BoxDecoration(
+                    color: white,
+                    border: Border.all(color: Colors.grey.withOpacity(0.5)),
+                  ),
                   child: DropdownButton<String>(
                     underline: Container(),
                     isExpanded: true,

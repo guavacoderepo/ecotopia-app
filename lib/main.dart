@@ -12,15 +12,15 @@ void main() => runApp(
               fontFamily: 'poppins',
               primaryColorDark: black,
               primaryColor: black,
-              inputDecorationTheme: const InputDecorationTheme(
+              inputDecorationTheme: InputDecorationTheme(
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: white),
+                  borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: deepgreen),
                 ),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: white),
+                  borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
                 ),
               ),
               scaffoldBackgroundColor: lightwhite,
