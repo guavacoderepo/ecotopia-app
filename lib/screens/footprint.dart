@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,8 +8,6 @@ import 'package:technovationapp/requestmodels/coin.dart';
 import '../constants/colors.dart';
 import '../utilities/font.dart';
 import '../requestmodels/usersclass.dart';
-
-late List<CameraDescription> _cameras;
 
 /// Footprint is the Main Application.
 class Footprint extends StatefulWidget {
@@ -32,7 +29,7 @@ class _FootprintState extends State<Footprint> {
   void initState() {
     super.initState();
     // print(widget.cameras);
-    if (widget.cameras == null || widget.cameras.isEmpty) {
+    if (widget.cameras.isEmpty) {
       // print('No Cameras Found.');
     } else {
       controller = CameraController(
@@ -53,18 +50,14 @@ class _FootprintState extends State<Footprint> {
   @override
   void dispose() {
     controller.dispose();
+    
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // if (!controller.value.isInitialized) {
-
-    //   Navigator.pop(context);
-    // }
     var user = Provider.of<Users>(context, listen: true).user;
-    DateTime lastScan = HttpDate.parse("user.data.lastScan");
-    // DateTime lastScan = HttpDate.parse(user.data.lastScan);
+    DateTime lastScan = HttpDate.parse(user.data!.lastScan as String);
     Duration remaining = DateTime.now().difference(lastScan);
 // generate random int
     Timer.periodic(
@@ -84,8 +77,14 @@ class _FootprintState extends State<Footprint> {
         // cart icon
         actions: [
           Padding(
-              padding: const EdgeInsets.only(right: 10, top: 15),
-              child: text("R: ${24 - remaining.inHours} Hours", 16)),
+            padding: const EdgeInsets.only(right: 10, top: 15),
+            child: text(
+              24 - remaining.inHours < 0
+                  ? "0"
+                  : "R: ${24 - remaining.inHours} Hours",
+              16,
+            ),
+          ),
         ],
 
         // pop icon
@@ -112,8 +111,6 @@ class _FootprintState extends State<Footprint> {
               child: TextButton(
                 onPressed: () async {
                   update(user.data!.username);
-                  // Provider.of<Users>(context, listen: false)
-                  //     .users(username: user.data.username);
                   setState(() => isCam = true);
                 },
                 child: text("Continue", 14),
