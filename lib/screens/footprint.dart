@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'dart:io';
-import 'dart:math';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -50,7 +48,7 @@ class _FootprintState extends State<Footprint> {
   @override
   void dispose() {
     controller.dispose();
-    
+
     super.dispose();
   }
 
@@ -60,14 +58,6 @@ class _FootprintState extends State<Footprint> {
     DateTime lastScan = HttpDate.parse(user.data!.lastScan as String);
     Duration remaining = DateTime.now().difference(lastScan);
 // generate random int
-    Timer.periodic(
-      const Duration(seconds: 4),
-      (timer) => setState(() {
-        newcoin = Random().nextInt(3) / 10;
-        coin += newcoin;
-      }),
-    );
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: transparent,
@@ -109,9 +99,12 @@ class _FootprintState extends State<Footprint> {
             )
           : Center(
               child: TextButton(
-                onPressed: () async {
-                  update(user.data!.username);
-                  setState(() => isCam = true);
+                onPressed: () {
+                  update(user.data!.username).then((value) async {
+                    await users(context).then((value) {
+                      setState(() => isCam = true);
+                    });
+                  });
                 },
                 child: text("Continue", 14),
               ),

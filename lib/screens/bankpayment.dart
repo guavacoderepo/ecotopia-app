@@ -24,6 +24,8 @@ class _BankPaymentState extends State<BankPayment> {
   String _selectedbank = "Select Bank";
   String? token = "";
 
+  bool isProcessing = false;
+
   @override
   void initState() {
     setState(() {
@@ -133,24 +135,36 @@ class _BankPaymentState extends State<BankPayment> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: f1('proceed to Cashout', 15, color: black),
+            title: isProcessing
+                ? null
+                : f1('proceed to Cashout', 15, color: black),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  f1('Are you sure you want to cashout', 13, color: black),
+                  isProcessing
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: green,
+                            strokeWidth: 1,
+                          ),
+                        )
+                      : f1('Are you sure you want to cashout', 13,
+                          color: black),
                 ],
               ),
             ),
-            actions: <Widget>[
-              TextButton(
-                child: f1("Yes", 14, color: deepgreen),
-                onPressed: () async {
-                  FocusScope.of(context).unfocus();
-                  Navigator.pop(context);
-                  payment(bank, token, username, name, amount);
-                },
-              ),
-            ],
+            actions: isProcessing
+                ? null
+                : <Widget>[
+                    TextButton(
+                      child: f1("Yes", 14, color: deepgreen),
+                      onPressed: () async {
+                        FocusScope.of(context).unfocus();
+                        setState(() => isProcessing = true);
+                        payment(bank, token, username, name, amount);
+                      },
+                    ),
+                  ],
           );
         });
   }
@@ -165,6 +179,7 @@ class _BankPaymentState extends State<BankPayment> {
                 content: f5("Transfer successful.", 12, color: white),
               ),
             );
+            setState(() => isProcessing = false);
             // go back to dashboard page
             pushUntil(context, const Dashboard());
           });
@@ -174,6 +189,7 @@ class _BankPaymentState extends State<BankPayment> {
               content: f5(value["message"], 12, color: white),
             ),
           );
+          setState(() => isProcessing = false);
         }
       });
 }

@@ -97,7 +97,7 @@ class _NewspageState extends State<Newspage> {
                         weight: FontWeight.w300,
                       ),
                     ),
-                    f7("bbc.com", 11, color: deepgreen),
+                    f7(src[i], 11, color: deepgreen),
                   ],
                 )
               ],
