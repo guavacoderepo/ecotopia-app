@@ -17,6 +17,7 @@ class BankPayment extends StatefulWidget {
   State<BankPayment> createState() => _BankPaymentState();
 }
 
+
 class _BankPaymentState extends State<BankPayment> {
   final TextEditingController _accountname = TextEditingController();
   final TextEditingController _amount = TextEditingController();
